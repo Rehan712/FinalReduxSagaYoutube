@@ -1,31 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { func } from 'prop-types';
 
-class App extends Component {
-  constructor() {
-    super();
+import Nav from './Nav';
+import VideoPlayer from './VideoPlayer';
+import VideoList from './VideoList';
+import * as actions from '../actions';
+
+export class App extends React.Component {
+  componentDidMount() {
+    const { getVideos } = this.props;
+
+    getVideos('javascript', true);
   }
 
   render() {
-    let {} = this.props;
-
     return (
       <div className="app">
-        Hello
+        <Nav />
+        <div className="col-md-7">
+          <VideoPlayer />
+        </div>
+        <div className="col-md-5">
+          <VideoList />
+        </div>
       </div>
     );
   }
-};
+}
 
 App.propTypes = {
-  //getAction: PropTypes.func.isRequired,
+  getVideos: func.isRequired
 };
 
-function mapStateToProps(state) {
-  return {
-    test: state.test
-  };
-};
-
-export default connect(mapStateToProps,{})(App);
+export default connect(null, { getVideos: actions.getVideos })(App);

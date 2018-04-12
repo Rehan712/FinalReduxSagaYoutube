@@ -1,37 +1,43 @@
-import{FETCH_VIDEO_ATTEMPT,FETCH_VIDEO_SUCCESS,FETCH_VIDEO_FAIL,GET_VIDEOS,SELECT_VIDEO } from '../constants';
+import {
+	FETCH_VIDEOS_ATTEMPT,
+	FETCH_VIDEOS_SUCCESS,
+	FETCH_VIDEOS_FAIL,
+	GET_VIDEOS,
+	SELECT_VIDEO
+} from '../constants';
 
-export function getVideos(query,loadingState) {
+export function getVideos(query, initial) {
 	return {
-		type:GET_VIDEOS,
-		payload:{
-
-			query,loadingState
+		type: GET_VIDEOS,
+		payload: {
+			query,
+			initial
 		}
-	}
+	};
 }
 
 export function fetchVideosSuccess(videos) {
 	return {
-		type:FETCH_VIDEO_SUCCESS,
-		payload:videos
-	}
+		type: FETCH_VIDEOS_SUCCESS,
+		payload: videos
+	};
 }
 
 export function fetchVideosFail(error) {
 	return {
-		type:FETCH_VIDEO_FAIL,
-		payload:error
-	}
+		type: FETCH_VIDEOS_FAIL,
+		payload: error
+	};
 }
 
 export function fetchVideosAttempt() {
 	return {
-		type:FETCH_VIDEO_ATTEMPT
-	}
+		type: FETCH_VIDEOS_ATTEMPT
+	};
 }
 export function selectVideo(video) {
 	return {
-		type:SELECT_VIDEO,
-		payload:video
-	}
+		type: SELECT_VIDEO,
+		payload: video
+	};
 }

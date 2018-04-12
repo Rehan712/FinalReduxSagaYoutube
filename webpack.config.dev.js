@@ -1,8 +1,5 @@
 module.exports = {
-  entry: [
-    './src/js/index.jsx',
-    './src/css/styles.scss'
-  ],
+  entry: ['babel-polyfill', './src/js/index.jsx', './src/css/styles.scss'],
   output: {
     path: `${__dirname}/dist/js`,
     filename: 'bundle.js',
@@ -18,7 +15,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            plugins: ["transform-object-rest-spread", ]
+            plugins: ['transform-object-rest-spread']
           }
         }
       },
@@ -29,14 +26,14 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env'],
-            plugins: ["transform-object-rest-spread", ]
+            plugins: ['transform-object-rest-spread']
           }
         }
       },
       {
-        test:/\.css$/,
+        test: /\.css$/,
         use: [
-          'style-loader', 
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -46,8 +43,8 @@ module.exports = {
         ]
       },
       {
-        test:/\.scss$/,
-        use: [ 
+        test: /\.scss$/,
+        use: [
           'style-loader',
           {
             loader: 'css-loader',
@@ -62,13 +59,13 @@ module.exports = {
   },
 
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     historyApiFallback: true
   },
 
   devtool: 'source-map',
 
   resolve: {
-    extensions:['.js', '.jsx']
+    extensions: ['.js', '.jsx']
   }
 };
